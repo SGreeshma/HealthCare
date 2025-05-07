@@ -1,0 +1,337 @@
+{'s': 'ok', 'code': 200, 'message': '', 'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTY1MDYyMTgsImV4cCI6MTcxNjUxMDY1OCwibmJmIjoxNzE2NTA2MjE4LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCbVQ4NXFLODU0bDdNRlpXWmtiNUN2OVV5c2c2eTZWR0pmVGZGR201aWxUbEM4QlA1dU9nR2o3dERiUmIxcGM1eWJnVGZkREJHVFRON2d6OUtYWDh3U1ZrcDd6aV9vNEhRbjNwZTRQRUxEeU5VRU5EQT0iLCJkaXNwbGF5X25hbWUiOiJEV0FSQUtBIFNBSSBURUpBIFNPTUFST1VUSFUiLCJvbXMiOiJLMSIsImhzbV9rZXkiOm51bGwsImZ5X2lkIjoiWEQxNjk1MSIsImFwcFR5cGUiOjEwMCwicG9hX2ZsYWciOiJOIn0.Iuj0lxuXfaDERC-aNUf9ExgJaQ9OSM12_hpz1cQHzV8', 
+
+'refresh_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTY1MDYyMTgsImV4cCI6MTcxNzcyMDI1OCwibmJmIjoxNzE2NTA2MjE4LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6InJlZnJlc2hfdG9rZW4iLCJhdF9oYXNoIjoiZ0FBQUFBQm1UODVxSzg1NGw3TUZaV1prYjVDdjlVeXNnNnk2VkdKZlRmRkdtNWlsVGxDOEJQNXVPZ0dqN3REYlJiMXBjNXliZ1RmZERCR1RUTjdnejlLWFg4d1NWa3A3emlfbzRIUW4zcGU0UEVMRHlOVUVOREE9IiwiZGlzcGxheV9uYW1lIjoiRFdBUkFLQSBTQUkgVEVKQSBTT01BUk9VVEhVIiwib21zIjoiSzEiLCJoc21fa2V5IjpudWxsLCJmeV9pZCI6IlhEMTY5NTEiLCJhcHBUeXBlIjoxMDAsInBvYV9mbGFnIjoiTiJ9.DCJT0HXdpC-1LckaGnmkXO9JgVMzD4vnRoKGgIgwUUQ'}
+
+from fyers_apiv3 import fyersModel
+
+client_id = "XC4XXXXM-100"
+access_token = "eyJ0eXXXXXXXX2c5-Y3RgS8wR14g"
+
+# Initialize the FyersModel instance with your client_id, access_token, and enable async mode
+fyers = fyersModel.FyersModel(client_id=client_id, is_async=False, token=access_token, log_path="")
+
+# Make a request to get the user profile information
+response = fyers.get_profile()
+
+# Print the response received from the Fyers API
+print(response)
+
+----------------------------------------------------------------------------------------------------------------
+Sample Response
+----------------------------------------------------------------------------------------------------------------
+  {
+    "s":"ok",
+    "code":200,
+    "message":"",
+    "data":{
+        "fy_id":"XXXXX86",
+        "name":"VINAY",
+        "image":"https://fyers-user-details.s3.amazonaws.com/image/FK6107548224?X-Amz-Algorithm=AWS4-HMAC",
+        "display_name":"VKM",
+        "pin_change_date":"15-12-2022 09:24:05",
+        "email_id":"xxxnayxm@gmxxl.com",
+        "pwd_change_date":"None",
+        "PAN":"XXXXXXXXXX",
+        "mobile_number":"9XXXXX678",
+        "totp":true,
+        "pwd_to_expire":90
+    }
+  }
+
+
+from fyers_apiv3 import fyersModel
+
+client_id = "XC4XXXXM-100"
+access_token = "eyJ0eXXXXXXXX2c5-Y3RgS8wR14g"
+
+# Initialize the FyersModel instance with your client_id, access_token, and enable async mode
+fyers = fyersModel.FyersModel(client_id=client_id, token=access_token,is_async=True, log_path="")
+
+# Make a request to get the funds information
+response = fyers.funds()
+print(response)
+
+----------------------------------------------------------------------------------------------------------------
+Sample Response
+----------------------------------------------------------------------------------------------------------------
+
+  {
+    "code":200,
+    "message":"",
+    "s":"ok",
+    "fund_limit":[
+        {
+          "id":1,
+          "title":"Total Balance",
+          "equityAmount":58.150000000000006,
+          "commodityAmount":0
+        },
+        {
+          "id":2,
+          "title":"Utilized Amount",
+          "equityAmount":0.3,
+          "commodityAmount":0
+        },
+        {
+          "id":3,
+          "title":"Clear Balance",
+          "equityAmount":58.150000000000006,
+          "commodityAmount":0
+        },
+        {
+          "id":4,
+          "title":"Realized Profit and Loss",
+          "equityAmount":-0.3,
+          "commodityAmount":0
+        },
+        {
+          "id":5,
+          "title":"Collaterals",
+          "equityAmount":0,
+          "commodityAmount":0
+        },
+        {
+          "id":6,
+          "title":"Fund Transfer",
+          "equityAmount":0,
+          "commodityAmount":0
+        },
+        {
+          "id":7,
+          "title":"Receivables",
+          "equityAmount":0,
+          "commodityAmount":0
+        },
+        {
+          "id":8,
+          "title":"Adhoc Limit",
+          "equityAmount":0,
+          "commodityAmount":0
+        },
+        {
+          "id":9,
+          "title":"Limit at start of the day",
+          "equityAmount":58.45,
+          "commodityAmount":0
+        },
+        {
+          "id":10,
+          "title":"Available Balance",
+          "equityAmount":58.150000000000006,
+          "commodityAmount":0
+        }
+    ]
+  }
+
+
+
+
+{'s': 'ok', 'code': 200, 'message': '', 'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTY1MDc2OTYsImV4cCI6MTcxNjUxMDYzNiwibmJmIjoxNzE2NTA3Njk2LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCbVQ5UXdnSmZQQVZVc3JNcEhYV21OY2dNZ0NMc2EtTGwxUjNPal93ZkRDamg1bVJvbkJvOFBOZkFzZUNUbnpEcUlsWjlUeFNuV1Bvckd5TVVyNnh0SlMwS0NyNlBOSmlSMWVVN1JVR2FJZmlPSlY4VT0iLCJkaXNwbGF5X25hbWUiOiJEV0FSQUtBIFNBSSBURUpBIFNPTUFST1VUSFUiLCJvbXMiOiJLMSIsImhzbV9rZXkiOm51bGwsImZ5X2lkIjoiWEQxNjk1MSIsImFwcFR5cGUiOjEwMCwicG9hX2ZsYWciOiJOIn0.G9FZ-W9qZz4A7aDA7MIdPCz-IS9D4kOHNZfcE6Gxkvk', 'refresh_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE3MTY1MDc2OTYsImV4cCI6MTcxNzcyMDIzNiwibmJmIjoxNzE2NTA3Njk2LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6InJlZnJlc2hfdG9rZW4iLCJhdF9oYXNoIjoiZ0FBQUFBQm1UOVF3Z0pmUEFWVXNyTXBIWFdtTmNnTWdDTHNhLUxsMVIzT2pfd2ZEQ2poNW1Sb25CbzhQTmZBc2VDVG56RHFJbFo5VHhTbldQb3JHeU1VcjZ4dEpTMEtDcjZQTkppUjFlVTdSVUdhSWZpT0pWOFU9IiwiZGlzcGxheV9uYW1lIjoiRFdBUkFLQSBTQUkgVEVKQSBTT01BUk9VVEhVIiwib21zIjoiSzEiLCJoc21fa2V5IjpudWxsLCJmeV9pZCI6IlhEMTY5NTEiLCJhcHBUeXBlIjoxMDAsInBvYV9mbGFnIjoiTiJ9.ZSHSLBtjo1MpKAIOjM2zvT7plgErZdqr_uluvwvRXm8'}
+
+
+
+
+
+curl -H "Authorization:appId:access_token" -H "Content-Type: application/json" -X POST -d '[
+  {
+    "symbol":"NSE:ITC-EQ",
+    "qty":1,
+    "type":1,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":165,
+    "stopPrice":0,
+    "disclosedQty":0,
+    "validity":"DAY",
+    "offlineOrder":"TRUE",
+    "stopLoss":0,
+    "takeProfit":0,
+    "orderTag":"tag1"
+  },
+  {
+    "symbol":"NSE:ITC-EQ",
+    "qty":1,
+    "type":1,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":165.10,
+    "stopPrice":0,
+    "disclosedQty":0,
+    "validity":"DAY",
+    "offlineOrder":"TRUE",
+    "stopLoss":0,
+    "takeProfit":0,
+    "orderTag":"tag1"
+  },
+  {
+    "symbol":"NSE:ITC-EQ",
+    "qty":1,
+    "type":1,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":165.10,
+    "stopPrice":0,
+    "disclosedQty":0,
+    "validity":"DAY",
+    "offlineOrder":"TRUE",
+    "stopLoss":0,
+    "takeProfit":0,
+    "orderTag":"tag1"
+  }
+]' https://api-t1.fyers.in/api/v3/multi-order/sync
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Sample Success Response 
+------------------------------------------------------------------------------------------------------------------------------------------
+ {
+    "s": "ok",
+    "code": 200,
+    "message": "",
+    "data": [{"statusCode": 200,
+              "body": {
+                        "s": "ok",
+                        "code": 200,
+                        "message": "Order submitted successfully. 
+                                    Your Order Ref. No. 120080778988",
+                        "id": "120080778988"
+                      },
+              "statusDescription": "HTTP OK"
+            },
+            {
+              "statusCode": 200,
+              "body": 
+                      {
+                        "s": "ok",
+                        "code": 200,
+                        "message": "Order submitted successfully. 
+                                    Your Order Ref. No.120080777359",
+                        "id": "120080777359"
+                      },
+              "statusDescription": "HTTP OK"
+            },
+            {
+              "statusCode": 200,
+              "body": 
+                      {
+                        "s": "ok",
+                        "code": 200,
+                        "message": "Order submitted successfully. 
+                                    Your Order Ref. No.120080777379",
+                        "id": "120080777379"
+                      }, "statusDescription": "HTTP OK"
+              }]
+  }
+
+
+
+
+
+
+
+from fyers_apiv3 import fyersModel
+
+client_id = "XC4XXXXM-100"
+access_token = "eyJ0eXXXXXXXX2c5-Y3RgS8wR14g"
+# Initialize the FyersModel instance with your client_id, access_token, and enable async mode
+fyers = fyersModel.FyersModel(client_id=client_id, token=access_token,is_async=False, log_path="")
+
+data = [{
+    "symbol":"NSE:SBIN-EQ",
+    "qty":1,
+    "type":2,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":0,
+    "stopPrice":0,
+    "validity":"DAY",
+    "disclosedQty":0,
+    "offlineOrder":False,
+},
+{
+    "symbol":"NSE:IDEA-EQ",
+    "qty":1,
+    "type":2,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":0,
+    "stopPrice":0,
+    "validity":"DAY",
+    "disclosedQty":0,
+    "offlineOrder":False,
+},{
+    "symbol":"NSE:SBIN-EQ",
+    "qty":1,
+    "type":2,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":0,
+    "stopPrice":0,
+    "validity":"DAY",
+    "disclosedQty":0,
+    "offlineOrder":False,
+},
+{
+    "symbol":"NSE:IDEA-EQ",
+    "qty":1,
+    "type":2,
+    "side":1,
+    "productType":"INTRADAY",
+    "limitPrice":0,
+    "stopPrice":0,
+    "validity":"DAY",
+    "disclosedQty":0,
+    "offlineOrder":False,
+}]
+
+response = fyers.place_basket_orders(data=data)
+print(response)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Sample Success Response 
+------------------------------------------------------------------------------------------------------------------------------------------
+   {
+        "s":"ok",
+        "code":200,
+        "message":"",
+        "data":[{"statusCode":200,
+              "body":{
+                        "s":"ok",
+                        "code":1101,
+                        "message":"Order submitted successfully. Your Order Ref. No.52104097619",
+                        "id":"52104097619"
+                    },
+        "statusDescription":"HTTP OK"
+        },
+        {
+        "statusCode":200,
+        "body":{
+        "s":"ok",
+        "code":1101,
+        "message":"Order submitted successfully. Your Order Ref. No.52104097620",
+        "id":"52104097620"
+        },
+          "statusDescription":"HTTP OK"
+        },
+        {
+        "statusCode":200,
+        "body":{
+        "s":"ok",
+        "code":1101,
+        "message":"Order submitted successfully. Your Order Ref. No.52104097621",
+        "id":"52104097621"
+        },
+        "statusDescription":"HTTP OK"
+        },
+        {
+        "statusCode":400,
+        "body":{
+          "s":"error",
+          "code":-392,
+          "message":"Price should be in multiples of tick size.",
+          "id":""
+          },
+        "statusDescription":"400 Bad Request"
+    }]
+ }
+

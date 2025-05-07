@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patient Details</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 1rem;
+			text-align: center;
+		}
+		
+		main {
+			padding: 2rem;
+		}
+		
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 2rem;
+		}
+		
+		label {
+			flex-basis: 100%;
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+		
+		input[type="text"], input[type="email"], input[type="tel"], textarea {
+			flex-basis: 100%;
+			margin-bottom: 1rem;
+			padding: 0.5rem;
+		}
+		
+		select {
+			flex-basis: 100%;
+			margin-bottom: 1rem;
+			padding: 0.5rem;
+		}
+		
+		button[type="submit"] {
+			background-color: #337ab7;
+			border: none;
+			color: #fff;
+			padding: 0.5rem 1rem;
+			text-transform: uppercase;
+		}
+		
+		.notification {
+			background-color: #337ab7;
+			color: #fff;
+			display: none;
+			padding: 0.5rem 1rem;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
+		}
+		
+		.notification.show {
+			display: block;
+		}
+		
+		.appointment-history {
+			background-color: #f7f7f7;
+			padding: 1rem;
+			margin-top: 2rem;
+		}
+		
+		.appointment-history h2 {
+			margin-top: 0;
+		}
+		
+		.appointment-item {
+			margin-bottom: 1rem;
+		}
+		
+		.appointment-item strong {
+			display: block;
+			margin-bottom: 0.2rem;
+		}
+	
+	</style>
+</head>
+<body>
+	<h1>Patient Details</h1>
+	<form id="patient-form">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br><br>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email"><br><br>
+		<label for="phone">Phone:</label>
+		<input type="tel" id="phone" name="phone"><br><br>
+		<label for="doctor">Select a Doctor:</label>
+		<select id="doctor" name="doctor">
+			<option value="">Select a Doctor</option>
+			<option value="Dr. John Doe">Dr. John Doe</option>
+			<option value="Dr. Jane Smith">Dr. Jane Smith</option>
+			<option value="Dr. Bob Johnson">Dr. Bob Johnson</option>
+		</select><br><br>
+		<label for="date">Date:</label>
+		<input type="date" id="date" name="date"><br><br>
+		<label for="time">Time:</label>
+		<input type="time" id="time" name="time"><br><br>
+		<label for="reason">Reason for Visit:</label>
+		<textarea id="reason" name="reason"></textarea><br><br>
+		<button type="submit">Book Appointment</button>
+	</form>
+	
+	<div class="appointment-notification">
+		<h2>Appointment Booked Successfully!</h2>
+		<p>Your appointment details are as follows:</p>
+		<ul>
+			<li><strong>Doctor:</strong> <span id="doctor-name"></span></li>
+			<li><strong>Date:</strong> <span id="appointment-date"></span></li>
+			<li><strong>Time:</strong> <span id="appointment-time"></span></li>
+			<li><strong>Reason for Visit:</strong> <span id="reason-for-visit"></span></li>
+		</ul>
+		<button id="close-notification">Close</button>
+	</div>
+	
+	<div class="appointment-history">
+		<h2>Appointment History</h2>
+		<ul id="appointment-list">
+			<!-- Appointment history items will be added here -->
+		</ul>
+	</div>
+	
+	<script>
+		const form = document.getElementById('patient-form');
+		const notificationDiv = document.querySelector('.appointment-notification');
+		const closeNotificationButton = document.getElementById('close-notification');
+		const appointmentList = document.getElementById('appointment-list');
+		
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const name = document.getElementById('name').value;
+			const email = document.getElementById('email').value;
+			const phone = document.getElementById('phone').value;
+			const doctor = document.getElementById('doctor').value;
+			const date = document.getElementById('date').value;
+			const time = document.getElementById('time').value;
+			const reason = document.getElementById('reason').value;
+			
+			// Update notification content
+			document.getElementById('doctor-name').textContent = doctor;
+			document.getElementById('appointment-date').textContent = date;
+			document.getElementById('appointment-time').textContent = time;
+			document.getElementById('reason-for-visit').textContent = reason;
+			
+			// Add appointment history item
+			const appointmentItem = `
+				<li>
+					<strong>Doctor:</strong> ${doctor}<br>
+					<strong>Date:</strong> ${date}<br>
+					<strong>Time:</strong> ${time}<br>
+					<strong>Reason:</strong> ${reason}
+				</li>
+			`;
+			appointmentList.innerHTML += appointmentItem;
+			
+			// Show the notification
+			notificationDiv.classList.add('show');
+		});
+		
+		closeNotificationButton.addEventListener('click', () => {
+			notificationDiv.classList.remove('show');
+		});
+	</script>
+</body>
+</html>

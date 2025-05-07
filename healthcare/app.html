@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>baa</title>
+    <style>
+        .appointment-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  .appointment-notification.show {
+    display: block;
+  }
+  </style>
+  <body>
+<div class="appointment-notification">
+    <script src="2.js"></script>
+    <h2>Appointment Booked Successfully!</h2>
+    <p>Your appointment details are as follows:</p>
+    <ul>
+      <li><strong>Doctor:</strong> <span id="doctor-name"></span></li>
+      <li><strong>Date:</strong> <span id="appointment-date"></span></li>
+      <li><strong>Time:</strong> <span id="appointment-time"></span></li>
+      <li><strong>Reason for Visit:</strong> <span id="reason-for-visit"></span></li>
+    </ul>
+    <button id="close-notification">Close</button>
+  </div>
+  </body>
+  </head>
+  

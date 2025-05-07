@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment</title>
+    <style>
+        /* CSS Code */
+       .payment-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+       .payment-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+       .form-group {
+            margin-bottom: 20px;
+        }
+
+       .label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+       .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+       .input-field:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+       .btn-submit {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+       .btn-submit:hover {
+            background-color: #3e8e41;
+        }
+
+       .notification-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+       .notification-popup.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Online Payment</h1>
+        <form class="payment-form">
+            <div class="patient-details">
+                <h2>Patient Details</h2>
+                <div class="form-group">
+                    <label for="patient-name" class="label">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" class="input-field" placeholder="Enter patient name">
+                </div>
+                <div class="form-group">
+                    <label for="admission-date" class="label">Admission Date:</label>
+                    <input type="date" id="admission-date" name="admission-date" class="input-field">
+                </div>
+                <div class="form-group">
+                    <label for="discharge-date" class="label">Discharge Date:</label>
+                    <input type="date" id="discharge-date" name="discharge-date" class="input-field">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="amount" class="label">Amount:</label>
+                <input type="text" id="amount" name="amount" class="input-field" placeholder="Enter amount">
+            </div>
+            <div class="form-group">
+                <label for="description" class="label">Description:</label>
+                <textarea id="description" name="description" class="input-field" placeholder="Enter description"></textarea>
+            </div>
+            <button class="btn-submit">Make Payment</button>
+        </form>
+        <div class="notification-popup">
+            <p>Payment successful!</p>
+            <button class="close-notification">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('.patient-form');
+        const notificationPopup = document.querySelector('.notification-popup');
+        const closeNotificationButton = document.querySelector('.close-notification');
+      
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Save patient details to database or API
+            // For demo purposes, just simulate a successful save
+            setTimeout(() => {
+                notificationPopup.classList.add('show');
+                setTimeout(() => {
+                    notificationPopup.classList.remove('show');
+                }, 3000);
+            }, 1000);
+        });
+      
+        closeNotificationButton.addEventListener('click', () => {
+            notificationPopup.classList.remove('show');
+        });
+      </script>
+            

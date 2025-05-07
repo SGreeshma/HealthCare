@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare System Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        
+            <h1>Healthcare System Login</h1>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <div class="input-container">
+                    <input type="text" id="username" name="username" required>
+                    <span class="error-message" id="username-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="error-message" id="password-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <div class="input-container">
+                    <select id="role" name="role" required>
+                        <option value="">Select a role</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="nurse">Nurse</option>
+                        <option value="admin">Admin</option>
+			<option value="patient">Patient</option>
+                    </select>
+                    <span class="error-message" id="role-error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Remember me</label>
+	            <center><p>Forgot password? <a href="enter your details">Click here</a></p></center><br>
+            </div>
+        <center><button type= "submit" , onclick="location.href='mm.html'">Login</button></center>
+            <p id="login-error"></p>
+        </form>
+<p><center>Need an account?<a href="#">Create one</a></center></p>
+        
+    </div>
+</body>
+</html>

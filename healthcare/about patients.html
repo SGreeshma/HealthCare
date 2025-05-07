@@ -1,0 +1,200 @@
+<section class="patient-details">
+  <h1 class="heading">Patient Details</h1>
+      <form class="patient-form">
+          <div class="form-group">
+              <label for="patient-name" class="label">Name:</label>
+              <input type="text" id="patient-name" name="patient-name" class="input-field">
+          </div>
+          <div class="form-group">
+              <label for="patient-email" class="label">Email:</label>
+              <input type="email" id="patient-email" name="patient-email" class="input-field">
+          </div>
+          <div class="form-group">
+              <label for="patient-phone" class="label">Phone:</label>
+              <input type="tel" id="patient-phone" name="patient-phone" class="input-field">
+          </div>
+          <div class="form-group">
+              <label for="patient-address" class="label">Address:</label>
+              <textarea id="patient-address" name="patient-address" class="input-field"></textarea>
+          </div>
+          <div class="form-group">
+              <label for="patient-dob" class="label">Date of Birth:</label>
+              <input type="date" id="patient-dob" name="patient-dob" class="input-field">
+          </div>
+          <div class="form-group">
+              <label for="patient-gender" class="label">Gender:</label>
+              <select id="patient-gender" name="patient-gender" class="select-field">
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="patient-blood-group" class="label">Blood Group:</label>
+              <select id="patient-blood-group" name="patient-blood-group" class="select-field">
+                  <option value="">Select Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+              </select>
+          </div>
+          <button type="submit" class="btn-submit">Save Patient Details</button>
+      </form>
+  </section>
+  <form class="patient-form">
+      <!-- form fields -->
+      
+  </form>
+  <div class="notification-popup">
+      <p>Patient details saved successfully!</p>
+      <button class="close-notification">Close</button>
+  </div>
+</section>
+
+<style>
+  .patient-details {
+max-width: 600px;
+margin: 40px auto;
+padding: 20px;
+background-color: #f9f9f9;
+border: 1px solid #ccc;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+margin-top: 0;
+font-size: 24px;
+font-weight: bold;
+color: #333;
+}
+
+.patient-form {
+margin-top: 20px;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.label {
+display: block;
+margin-bottom: 10px;
+font-size: 16px;
+font-weight: bold;
+color: #333;
+}
+
+.input-field,.select-field {
+width: 100%;
+height: 40px;
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+.input-field:focus,.select-field:focus {
+border-color: #aaa;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.select-field {
+height: 40px;
+padding: 10px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+.btn-submit {
+width: 100%;
+height: 40px;
+padding: 10px;
+font-size: 16px;
+font-weight: bold;
+color: #fff;
+background-color: #4CAF50;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.btn-submit:hover {
+background-color: #3e8e41;
+}
+
+.notification-popup {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+display: none;
+}
+
+.notification-popup.show {
+display: block;
+}
+
+.close-notification {
+float: right;
+font-size: 16px;
+font-weight: bold;
+color: #333;
+cursor: pointer;
+}
+
+.close-notification:hover {
+color: #666;
+}
+  /* Add some basic styling to the notification popup */
+  .notification-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+  }
+  .notification-popup.show {
+      display: block;
+  }
+</style>
+
+
+<script>
+  const form = document.querySelector('.patient-form');
+  const notificationPopup = document.querySelector('.notification-popup');
+  const closeNotificationButton = document.querySelector('.close-notification');
+
+  form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Save patient details to database or API
+      // For demo purposes, just simulate a successful save
+      setTimeout(() => {
+          notificationPopup.classList.add('show');
+          setTimeout(() => {
+              notificationPopup.classList.remove('show');
+          }, 3000);
+      }, 1000);
+  });
+
+  closeNotificationButton.addEventListener('click', () => {
+      notificationPopup.classList.remove('show');
+  });
+</script>

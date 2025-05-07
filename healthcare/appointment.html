@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>baa</title>
+    <style>
+      
+.appointment-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  background-color: #337ab7;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #23527c;
+}
+.appointment-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+  
+  .appointment-notification.show {
+    display: block;
+  }
+  .booking-history {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .booking-history h2 {
+    margin-bottom: 10px;
+  }
+
+  .booking-history ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .booking-history li {
+    margin-bottom: 10px;
+  }
+</style>
+  </head>
+  <body>
+  <div class="appointment-form-container">
+    <h1>Book an Appointment</h1>
+    <form id="appointment-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="doctor">Select a Doctor:</label>
+        <select id="doctor" name="doctor" required>
+          <option value="">Select a Doctor</option>
+          <option value="Dr. John Doe">Dr. John Doe</option>
+          <option value="Dr. Jane Smith">Dr. Jane Smith</option>
+          <option value="Dr. Bob Johnson">Dr. Bob Johnson</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+      <div class="form-group">
+        <label for="reason">Reason for Visit:</label>
+        <textarea id="reason" name="reason" required></textarea>
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+  <div class="appointment-notification">
+    <h2>Appointment Booked Successfully!</h2>
+    <p>Your appointment details are as follows:</p>
+    <ul>
+      <li><strong>Doctor:</strong> <span id="doctor-name"></span></li>
+      <li><strong>Date:</strong> <span id="appointment-date"></span></li>
+      <li><strong>Time:</strong> <span id="appointment-time"></span></li>
+      <li><strong>Reason for Visit:</strong> <span id="reason-for-visit"></span></li>
+    </ul>
+    <button id="close-notification">Close</button>
+  </div>
+  <div class="booking-history">
+    <h2>Booking History</h2>
+    <ul id="booking-list">
+      <!-- Booking history items will be added here -->
+    </ul>
+  </div>
+  <script>
+    const appointmentForm = document.getElementById('appointment-form');
+    const appointmentNotification = document.querySelector('.appointment-notification');
+    const closeNotificationButton = document.getElementById('close-notification');
+    const bookingList = document.getElementById('booking-list');
+
+    // Function to handle form submission
+    appointmentForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const doctor = document.getElementById('doctor').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+      const reason = document.getElementById('reason').value;
+
+      // Update notification content
+      document.getElementById('doctor-name').textContent = doctor;
+      document.getElementById('appointment-date').textContent = date;
+      document.getElementById('appointment-time').textContent = time;
+      document.getElementById('reason-for-visit').textContent = reason;
+
+      // Add booking history item
+      const bookingItem = `
+        <li>
+          <strong>Doctor:</strong> ${doctor}<br>
+          <strong>Date:</strong> ${date}<br>
+          <strong>Time:</strong> ${time}<br>
+          <strong>Reason:</strong> ${reason}
+        </li>
+      `;
+      bookingList.innerHTML += bookingItem; // Add to the booking history list
+
+      // Show the notification
+      appointmentNotification.classList.add('show');
+    });
+
+    // Close the notification
+    closeNotificationButton.addEventListener('click', () => {
+      appointmentNotification.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
